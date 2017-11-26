@@ -11,6 +11,118 @@ and open the template in the editor.
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
     </head>
     <body>
-        <div>TODO write content</div>
+    <center>
+        <label> Fiche projet </label><br/><br/>
+        <form action="http://localhost:8080/EAI_Project-war/webresources/projet" method="post">
+            <div>
+                <label>Nom et Coordonnées Client :</label>
+                <input type="text" id="nom" name="user_name" />
+            </div>
+            <div>
+                <label>Appellation Manifestation :</label>
+                <input type="text" id="manif" name="appel_manif" />
+            </div>
+            <div>
+                <label>Type de manifestation :</label>
+                <input type="radio" id="familiale" name="type_manif" value="Familiale"/>
+                <label for="familiale">Familiale</label>
+                <input type="radio" id="associative" name="type_manif" value="Associative"/>
+                <label for="associative">Associative</label>
+                <input type="radio" id="professionnelle" name="type_manif" value="Professionnelle"/>
+                <label for="professionnelle">Professionnelle</label>
+
+            </div>
+            <div>
+                <label>Date Manifestation :</label>
+                <input type="date" id="date" name="date_manif" />
+            </div>
+                
+            <div>
+                <label>Tranche Horaire manifestation</label>
+            </div>
+            <div>
+                <label>Début :</label>
+                <input type="radio" id="onze_deb" name="heure_debut" value="11h"/>
+                <label for="11h">11h</label>
+                <input type="radio" id="dix_huit_deb" name="heure_debut" value="18h"/>
+                <label for="18h">18h</label>
+            </div>
+            <div>
+                <label>Fin :</label>
+                <input type="radio" id="dix_huit_fin" name="heure_fin" value="18h"/>
+                <label for="18h">18h</label>
+                <input type="radio" id="minuit_fin" name="heure_fin" value="00h"/>
+                <label for="00h">00h</label>
+                <input type="radio" id="trois_fin" name="heure_fin" value="03h"/>
+                <label for="03h">03h</label>
+            </div>
+            <div>
+                <label>Type de prestation(s) :</label>
+                <input type="checkbox" id="cocktail_seul" name="type_presta" value="Cocktail seul"/>
+                <label for="cocktail_seul">Cocktail seul</label>
+                <input type="checkbox" id="lunch" name="type_presta" value="Lunch"/>
+                <label for="lunch">Lunch</label>
+                <input type="checkbox" id="repas_assis" name="type_presta" value="Repas assis"/>
+                <label for="repas_assis">Repas assis</label>
+            </div>
+            <div>
+                <label>Boissons Cocktails :</label>
+                <input type="checkbox" id="cocktail_prepare" name="boissons_cocktails" value="Cocktail prepare"/>
+                <label for="cocktail_prepare">Cocktail préparé</label>
+                <input type="checkbox" id="3aperitifs" name="boissons_cocktails" value="3 aperitifs"/>
+                <label for="3aperitifs">3 apéritifs</label>
+            </div>
+            <div>
+                <label>Vins Lunch :</label>
+                <input type="checkbox" id="blanc" name="vins_lunch" value="Blanc"/>
+                <label for="blanc">Blanc sec</label>
+                <input type="checkbox" id="rouge" name="vins_lunch" value="Rouge"/>
+                <label for="rouge">Rouge</label>
+                <input type="checkbox" id="rose" name="vins_lunch" value="Rose"/>
+                <label for="rose">Rosé</label>
+                <input type="checkbox" id="cremant" name="vins_lunch" value="Cremant"/>
+                <label for="cremant">Crémant</label>
+                <input type="checkbox" id="champagne" name="vins_lunch" value="Champagne"/>
+                <label for="champagne">Champagne</label>
+            </div>
+            <div>
+                <label>Animation(s) :</label>
+                <input type="checkbox" id="disco" name="animation" value="Disco"/>
+                <label for="disco">Disco</label>
+                <input type="checkbox" id="disco_anim" name="animation" value="Disco et Animation"/>
+                <label for="disco_anim">Disco et Animation</label>
+                <input type="checkbox" id="orchestre" name="animation" value="Orchestre"/>
+                <label for="orchestre">Orchestre</label>
+                <input type="checkbox" id="groupe_musical" name="animation" value="Groupe musical"/>
+                <label for="groupe_musical">Groupe musical</label>
+            </div>
+            <div>
+                <label>Prestation de décoration :</label>
+                <input type="radio" id="orne_basique" name="presta_deco" value="Ornementation basique"/>
+                <label for="orne_basique">Ornementation basique</label>
+                <input type="radio" id="deco_florale" name="presta_deco" value="Decoration florale"/>
+                <label for="deco_florale">Décoration florale</label>
+            </div>
+            <div>
+                <label>Prestation Communication post-évènementielle :</label>
+                <input type="radio" id="photos" name="presta_com" value="Photos"/>
+                <label for="photos">Photos</label>
+                <input type="radio" id="videos" name="presta_com" value="Videos"/>
+                <label for="videos">Vidéos</label>
+            </div>
+            <div>
+                <label>Prestation(s) Sécurité :</label>
+                <input type="checkbox" id="acces_salle" name="presta_secu" value="Acces Salle"/>
+                <label for="acces_salle">Accès Salle</label>
+                <input type="checkbox" id="gardien" name="presta_secu" value="Gardiennage"/>
+                <label for="gardien">Gardiennage parking</label>
+            </div>
+           
+
+            <div class="button">
+                <button type="submit">Création du projet</button>
+            </div>
+        </form>
+        </center>
     </body>
 </html>
