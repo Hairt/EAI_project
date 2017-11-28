@@ -1,16 +1,77 @@
 <!DOCTYPE html>
-<!--
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
--->
 <html>
     <head>
-        <title>TODO supply a title</title>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>
+            AngularJs $http.post() Service Response Example
+        </title>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
+        <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+        <script type="text/javascript">
+            var app = angular.module('serviceAppClient', []);
+            app.controller('serviceCtrlClient', function ($scope, $http) {
+                $scope.nom = null;
+                $scope.id = null;
+                $scope.test = null;
+                $scope.lenom = null;
+               // $scope.age = null;
+               // $scope.adress = null;
+                $scope.lblMsg = null;
+                $scope.postdata = function (nom) {
+                    var data = {
+                        nom: nom
+                       // age: age,
+                       // adress: adress
+                    };
+                    //Call the services
+                    $http.post('http://localhost:8080/EAI_Project-war/webresources/client', JSON.stringify(data)).then(function (response) {
+                        if (response.data)
+                            $scope.msg = "Post Data Submitted Successfully!";
+                            $scope.test = response.data.id;
+                    }, function (response) {
+                        $scope.msg = "Service not Exists";
+                        $scope.statusval = response.status;
+                        $scope.statustext = response.statusText;
+                        $scope.headers = response.headers();
+                    });
+                };
+                
+                $scope.getdata = function (id) {                    
+                    $http({
+                        method: 'GET',
+                        url: 'http://localhost:8080/EAI_Project-war/webresources/client/'
+                        }).then(function success(response) {
+                         console.log("test");
+                        // var valeur = JSON.stringify(response);
+                        $scope.lenom = response.data.nom;
+                    }, function error(response){
+                    });                    
+                };
+            });
+        </script>
     </head>
     <body>
-        <div>TODO write content</div>
+        <div ng-app="serviceAppClient" ng-controller="serviceCtrlClient">
+            <div>
+                PARTIE AJOUT DU CLIENT :<br/><br/>
+                Name : <input ng-model="nom" /><br/><br/>
+              <!--  Age : <input ng-model="age" /><br/><br/>
+                Adress : <input ng-model="adress" /><br/><br/>-->
+                <input type="button" value="Send" ng-click="postdata(nom)" /> <br/><br/>
+            </div>
+            <p>Output Message : {{msg}}</p>
+            <p> Nom du client ajoute : {{nom}}</p>
+            <p> ID du client ajoute: {{test}}</p>
+                
+            <div>
+                PARTIE AFFICHAGE D'UN CLIENT : <br/><br/>
+                Identifiant client : <input ng-model="id" />
+            <input type="button" value="Send" ng-click="getdata(id)" /> <br/><br/>
+            
+            <p> Nom du client : {{lenom}} </p>
+            </div>
+        </div>
     </body>
 </html>

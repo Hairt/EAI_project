@@ -43,5 +43,11 @@ public class ClientSessionBean {
         }
     }
     
+    public Client getClient(int id){
+        Client c = clients.getClient(id);
+        
+        return c;
+    }
+    
     
 }

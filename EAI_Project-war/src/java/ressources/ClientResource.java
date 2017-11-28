@@ -47,8 +47,12 @@ public class ClientResource {
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     public String getJson() {
+        int id= 1;
         //TODO return proper representation object
-        throw new UnsupportedOperationException();
+       String formatJSon = "{\"nom\": \"" + clientSessionBean.getClient(id).getNom() + "\"}" ;
+       System.out.println(formatJSon);
+       return formatJSon;
+       //throw new UnsupportedOperationException();
     }
 
     /**
